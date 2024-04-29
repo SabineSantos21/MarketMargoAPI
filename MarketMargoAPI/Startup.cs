@@ -47,7 +47,7 @@ namespace MarketMargoAPI
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "FazAcontecerAPI",
+                    ValidIssuer = "MarketMargoAPI",
                     ValidAudience = "Application",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("hrjendj372849fnwyd7349299kjdu8nbcoabe99"))
                 };

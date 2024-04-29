@@ -3,7 +3,7 @@
 namespace MarketMargoAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Login")]
     public class LoginController : ControllerBase
     {
         private readonly ConnectionDB _dbContext;
