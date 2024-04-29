@@ -11,13 +11,13 @@ namespace MarketMargoAPI.Models
         public int Id { get; set; }
 
         [JsonPropertyName("nome")]
-        public required string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [JsonPropertyName("email")]
-        public required string Email { get; set; }
+        public string? Email { get; set; }
 
         [JsonPropertyName("senha")]
-        public required string Senha { get; set; }
+        public string? Senha { get; set; }
 
         [JsonPropertyName("funcao")]
         public Funcao Funcao { get; set; }
@@ -34,5 +34,26 @@ namespace MarketMargoAPI.Models
         [NotMapped]
         [JsonPropertyName("token")]
         public string? Token { get; set; }
+    }
+
+    public class NovoUsuario
+    {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
+        [JsonPropertyName("email")]
+        public string? Email { get; set; }
+
+        [JsonPropertyName("senha")]
+        public string? Senha { get; set; }
+    }
+
+    public class AtualizarUsuario
+    {
+        [JsonPropertyName("email")]
+        public string? Email { get; set; }
+
+        [JsonPropertyName("senha")]
+        public string? Senha { get; set; }
     }
 }
