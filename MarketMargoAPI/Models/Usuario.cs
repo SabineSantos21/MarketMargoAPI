@@ -7,32 +7,32 @@ namespace MarketMargoAPI.Models
 {
     public class Usuario
     {
-        [JsonPropertyName("id")]
+        [JsonPropertyName("Id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("nome")]
+        [JsonPropertyName("Nome")]
         public string? Nome { get; set; }
 
-        [JsonPropertyName("email")]
+        [JsonPropertyName("Email")]
         public string? Email { get; set; }
 
-        [JsonPropertyName("senha")]
+        [JsonPropertyName("Senha")]
         public string? Senha { get; set; }
 
-        [JsonPropertyName("funcao")]
+        [JsonPropertyName("Funcao")]
         public Funcao Funcao { get; set; }
 
-        [JsonPropertyName("data_criacao")]
+        [JsonPropertyName("Data_criacao")]
         public DateTime Data_criacao { get; set; }
 
-        [JsonPropertyName("data_modificacao")]
+        [JsonPropertyName("Data_modificacao")]
         public DateTime Data_modificacao { get; set; }
 
-        [JsonPropertyName("ativo")]
+        [JsonPropertyName("Ativo")]
         public bool Ativo { get; set; }
 
         [NotMapped]
-        [JsonPropertyName("token")]
+        [JsonPropertyName("Token")]
         public string? Token { get; set; }
     }
 
