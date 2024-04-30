@@ -8,10 +8,10 @@ namespace MarketMargoAPI.Models
         public int Id { get; set; }
 
         [JsonPropertyName("nome")]
-        public required string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [JsonPropertyName("setor")]
-        public required string Setor { get; set; }
+        public string? Setor { get; set; }
 
         [JsonPropertyName("quantidade")]
         public int Quantidade { get; set; }
@@ -21,6 +21,33 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("data_modificacao")]
         public DateTime Data_modificacao { get; set; }
+
+        [JsonPropertyName("ativo")]
+        public bool Ativo { get; set; }
+    }
+
+    public class NovoProduto
+    {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
+        [JsonPropertyName("setor")]
+        public string? Setor { get; set; }
+
+        [JsonPropertyName("quantidade")]
+        public int Quantidade { get; set; }
+    }
+
+    public class AtualizarProduto
+    {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
+        [JsonPropertyName("setor")]
+        public string? Setor { get; set; }
+
+        [JsonPropertyName("quantidade")]
+        public int Quantidade { get; set; }
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }

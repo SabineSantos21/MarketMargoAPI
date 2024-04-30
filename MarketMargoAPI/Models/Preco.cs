@@ -8,10 +8,10 @@ namespace MarketMargoAPI.Models
         public int Id { get; set; }
 
         [JsonPropertyName("idProduto")]
-        public int Id_Produto { get; set; }
+        public int IdProduto { get; set; }
 
         [JsonPropertyName("porcentagemAumento")]
-        public double Porcentagem_Aumento { get; set; }
+        public double PorcentagemAumento { get; set; }
 
         [JsonPropertyName("valor")]
         public double Valor { get; set; }
@@ -21,6 +21,33 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("data_modificacao")]
         public DateTime Data_modificacao { get; set; }
+
+        [JsonPropertyName("ativo")]
+        public bool Ativo { get; set; }
+    }
+
+    public class NovoPreco
+    {
+        [JsonPropertyName("idProduto")]
+        public int IdProduto { get; set; }
+
+        [JsonPropertyName("porcentagemAumento")]
+        public double PorcentagemAumento { get; set; }
+
+        [JsonPropertyName("valor")]
+        public double Valor { get; set; }
+    }
+
+    public class AtualizarPreco
+    {
+        [JsonPropertyName("idProduto")]
+        public int IdProduto { get; set; }
+
+        [JsonPropertyName("porcentagemAumento")]
+        public double PorcentagemAumento { get; set; }
+
+        [JsonPropertyName("valor")]
+        public double Valor { get; set; }
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
