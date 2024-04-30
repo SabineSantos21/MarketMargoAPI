@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0' # ou a versão que você está usando
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0 # Substitua pela sua versão
+          release_name: Release v1.0.0 # Substitua pela sua versão
+          body: |
+            Descreva as notas de lançamento aqui.
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: MyProject
+          path: ./bin/Release/netcoreapp3.1 # Ajuste o caminho para os seus artefatos de build
