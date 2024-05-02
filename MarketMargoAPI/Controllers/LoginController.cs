@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MarketMargoAPI.Controllers
 {
@@ -14,9 +16,21 @@ namespace MarketMargoAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login()
+        public IActionResult Login(Login login)
         {
-            return Ok();
+            LoginService loginService = new LoginService(_dbContext);
+            Usuario? usuario = loginService.ValidarCredenciais(login.Email, login.Senha);
+
+            if (usuario != null)
+            {
+                usuario.Token = loginService.GerarTokenJWT(login.Email);
+
+                return Ok(usuario);
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
     }
 }

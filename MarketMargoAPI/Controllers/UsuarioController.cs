@@ -57,7 +57,7 @@ namespace MarketMargoAPI.Controllers
 
                 await usuarioService.CriarUsuario(usuario);
 
-                return Ok(usuario);
+                return Ok();
             }
             catch
             {
