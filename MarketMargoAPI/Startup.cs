@@ -53,8 +53,8 @@ namespace MarketMargoAPI
                 };
             });
 
-            //services.AddDbContext<ConnectionDB>(options =>
-            //options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 27))));
+            services.AddDbContext<ConnectionDB>(options =>
+            options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 27))));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

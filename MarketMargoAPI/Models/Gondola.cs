@@ -8,7 +8,7 @@ namespace MarketMargoAPI.Models
         public int Id { get; set; }
 
         [JsonPropertyName("nome")]
-        public required string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [JsonPropertyName("categoria")]
         public int Capacidade { get; set; }
@@ -21,6 +21,33 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("data_modificacao")]
         public DateTime Data_modificacao { get; set; }
+
+        [JsonPropertyName("ativo")]
+        public bool Ativo { get; set; }
+    }
+
+    public class NovaGondola
+    {
+        [JsonPropertyName("nome")]
+        public required string Nome { get; set; }
+
+        [JsonPropertyName("categoria")]
+        public int Capacidade { get; set; }
+
+        [JsonPropertyName("id_categoria")]
+        public int Id_Categoria { get; set; }
+    }
+
+    public class AtualizarGondola
+    {
+        [JsonPropertyName("nome")]
+        public required string Nome { get; set; }
+
+        [JsonPropertyName("categoria")]
+        public int Capacidade { get; set; }
+
+        [JsonPropertyName("id_categoria")]
+        public int Id_Categoria { get; set; }
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
