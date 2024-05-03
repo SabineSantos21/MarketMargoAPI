@@ -22,6 +22,11 @@ namespace MarketMargoAPI.Controllers
 
             IEnumerable<Usuario> usuarios = await usuarioService.GetUsuarios();
 
+            foreach (var item in usuarios)
+            {
+                item.Senha = string.Empty;
+            }
+
             return Ok(usuarios);
         }
 
@@ -36,6 +41,8 @@ namespace MarketMargoAPI.Controllers
             {
                 return NotFound();
             }
+
+            usuario.Senha = string.Empty;
 
             return usuario;
         }
@@ -71,6 +78,7 @@ namespace MarketMargoAPI.Controllers
             UsuarioService usuarioService = new UsuarioService(_dbContext);
 
             Usuario usuario = new Usuario();
+            usuario.Nome = atualizarUsuario.Nome;
             usuario.Email = atualizarUsuario.Email;
             usuario.Senha = atualizarUsuario.Senha;
 

@@ -7,32 +7,32 @@ namespace MarketMargoAPI.Models
 {
     public class Usuario
     {
-        [JsonPropertyName("Id")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("Nome")]
+        [JsonPropertyName("nome")]
         public string? Nome { get; set; }
 
-        [JsonPropertyName("Email")]
+        [JsonPropertyName("email")]
         public string? Email { get; set; }
 
-        [JsonPropertyName("Senha")]
+        [JsonPropertyName("senha")]
         public string? Senha { get; set; }
 
-        [JsonPropertyName("Funcao")]
+        [JsonPropertyName("funcao")]
         public Funcao Funcao { get; set; }
 
-        [JsonPropertyName("Data_criacao")]
+        [JsonPropertyName("data_criacao")]
         public DateTime Data_criacao { get; set; }
 
-        [JsonPropertyName("Data_modificacao")]
+        [JsonPropertyName("data_modificacao")]
         public DateTime Data_modificacao { get; set; }
 
-        [JsonPropertyName("Ativo")]
+        [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
 
         [NotMapped]
-        [JsonPropertyName("Token")]
+        [JsonPropertyName("token")]
         public string? Token { get; set; }
     }
 
@@ -50,6 +50,24 @@ namespace MarketMargoAPI.Models
 
     public class AtualizarUsuario
     {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
+        [JsonPropertyName("email")]
+        public string? Email { get; set; }
+
+        [JsonPropertyName("senha")]
+        public string? Senha { get; set; }
+
+        [JsonPropertyName("ativo")]
+        public bool Ativo { get; set; }
+    }
+
+    public class UsuarioResource
+    {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
         [JsonPropertyName("email")]
         public string? Email { get; set; }
 
