@@ -24,10 +24,17 @@ namespace MarketMargoAPI.Services
 
         public async Task<Gondola> CriarGondola(Gondola gondola)
         {
-            _dbContext.TbGondola.Add(gondola);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                _dbContext.TbGondola.Add(gondola);
+                await _dbContext.SaveChangesAsync();
 
-            return gondola;
+                return gondola;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task AtualizarGondola(Gondola existingGondola, Gondola gondola)

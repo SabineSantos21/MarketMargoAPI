@@ -10,7 +10,7 @@ namespace MarketMargoAPI.Models
         [JsonPropertyName("nome")]
         public string? Nome { get; set; }
 
-        [JsonPropertyName("categoria")]
+        [JsonPropertyName("capacidade")]
         public int Capacidade { get; set; }
 
         [JsonPropertyName("id_categoria")]
@@ -31,7 +31,7 @@ namespace MarketMargoAPI.Models
         [JsonPropertyName("nome")]
         public required string Nome { get; set; }
 
-        [JsonPropertyName("categoria")]
+        [JsonPropertyName("capacidade")]
         public int Capacidade { get; set; }
 
         [JsonPropertyName("id_categoria")]
@@ -43,7 +43,7 @@ namespace MarketMargoAPI.Models
         [JsonPropertyName("nome")]
         public required string Nome { get; set; }
 
-        [JsonPropertyName("categoria")]
+        [JsonPropertyName("capacidade")]
         public int Capacidade { get; set; }
 
         [JsonPropertyName("id_categoria")]
