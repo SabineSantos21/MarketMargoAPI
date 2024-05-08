@@ -15,6 +15,8 @@ namespace MarketMargoAPI
 
         public DbSet<Gondola> TbGondola { get; set; }
 
+        public DbSet<Caixa> TbCaixa { get; set; }
+
         public ConnectionDB(DbContextOptions<ConnectionDB> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +30,8 @@ namespace MarketMargoAPI
             modelBuilder.Entity<Categoria>().ToTable("tbcategoria").HasKey(u => u.Id);
             
             modelBuilder.Entity<Gondola>().ToTable("tbgondola").HasKey(u => u.Id);
+
+            modelBuilder.Entity<Caixa>().ToTable("tbcaixa").HasKey(u => u.Id);
         }
     }
 }
