@@ -15,6 +15,9 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("quantidade")]
         public int Quantidade { get; set; }
+        
+        [JsonPropertyName("id_categoria")]
+        public int Id_Categoria { get; set; }
 
         [JsonPropertyName("data_criacao")]
         public DateTime Data_criacao { get; set; }
@@ -36,6 +39,9 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("quantidade")]
         public int Quantidade { get; set; }
+
+        [JsonPropertyName("id_categoria")]
+        public int Id_Categoria { get; set; }
     }
 
     public class AtualizarProduto

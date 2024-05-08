@@ -17,6 +17,11 @@ namespace MarketMargoAPI.Services
             return await _dbContext.TbProduto.ToListAsync();
         }
 
+        public async Task<IEnumerable<Produto>> GetProdutosByIdCategoria(int id_categoria)
+        {
+            return await _dbContext.TbProduto.Where(p => p.Id_Categoria == id_categoria).ToListAsync();
+        }
+
         public async Task<Produto?> GetProdutoById(int id)
         {
             return await _dbContext.TbProduto.FirstOrDefaultAsync(p => p.Id == id);

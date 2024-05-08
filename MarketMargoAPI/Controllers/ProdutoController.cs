@@ -25,6 +25,16 @@ namespace MarketMargoAPI.Controllers
             return Ok(produtos);
         }
 
+        [HttpGet("id_categoria")]
+        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos(int id_categoria)
+        {
+            ProdutoService produtoService = new ProdutoService(_dbContext);
+
+            IEnumerable<Produto> produtos = await produtoService.GetProdutosByIdCategoria(id_categoria);
+
+            return Ok(produtos);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> GetProduto(int id)
         {
@@ -51,6 +61,7 @@ namespace MarketMargoAPI.Controllers
                 produto.Nome = novoProduto.Nome;
                 produto.Setor = novoProduto.Setor;
                 produto.Quantidade = novoProduto.Quantidade;
+                produto.Id_Categoria = novoProduto.Id_Categoria;
                 produto.Data_criacao = DateTime.Now;
                 produto.Data_modificacao = DateTime.Now;
                 produto.Ativo = true;
