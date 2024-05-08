@@ -18,11 +18,12 @@ namespace MarketMargoAPI.Controllers
 
         
         [HttpPost]
-        public async Task<ActionResult> CriarTransacao(NovaTransacao novaTransacao)
+        public async Task<ActionResult<List<Caixa>>> CriarTransacao(NovaTransacao novaTransacao)
         {
             try
             {
                 CaixaService caixaService = new CaixaService(_dbContext);
+                PrecoService precoService = new PrecoService(_dbContext);
 
                 var transacaoCode = caixaService.GenerateTransactionCode();
 
@@ -34,6 +35,7 @@ namespace MarketMargoAPI.Controllers
                     caixa.Cod_Barras = caixaService.GenerateRandomBarcode();
                     caixa.Status = StatusTransacao.SUCESSO.GetHashCode();
                     caixa.Transacao_Code = transacaoCode;
+                    caixa.Preco_Produto = precoService.GetPrecoByProdutoId(novaTransacaoItem.IdProduto).Valor;
                     caixa.Data_criacao = DateTime.Now;
                     caixa.Data_modificacao = DateTime.Now;
                     caixa.Ativo = true;
@@ -41,7 +43,9 @@ namespace MarketMargoAPI.Controllers
                     await caixaService.CriarCaixa(caixa);
                 }
 
-                return Ok();
+                List<Caixa> transactions = await caixaService.GetTransacaoByCode(transacaoCode);
+
+                return Ok(transactions);
             }
             catch
             {
@@ -55,6 +59,13 @@ namespace MarketMargoAPI.Controllers
             CaixaService caixaService = new CaixaService(_dbContext);
 
             List<Caixa> transactions = await caixaService.GetTransacaoByCode(cod_transacao);
+
+            ProdutoService produtoService = new ProdutoService(_dbContext);
+
+            foreach (var item in transactions)
+            {
+                item.Produto = produtoService.GetProdutoById(item.Id_Produto).Result;
+            }
 
             if (transactions == null)
             {

@@ -22,6 +22,11 @@ namespace MarketMargoAPI.Services
             return await _dbContext.TbPreco.FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public Preco? GetPrecoByProdutoId(int produto_id)
+        {
+            return _dbContext.TbPreco.Where(p => p.IdProduto == produto_id).OrderByDescending(p => p.Id).FirstOrDefault();
+        }
+
         public async Task<Preco> CriarPreco(Preco preco)
         {
             _dbContext.TbPreco.Add(preco);
