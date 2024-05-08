@@ -1,6 +1,8 @@
 ﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models.Enum;
 using MarketMargoAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.NetworkInformation;
 
 namespace MarketMargoAPI.Controllers
 {
@@ -58,6 +60,7 @@ namespace MarketMargoAPI.Controllers
                 usuario.Nome = novoUsuario.Nome;
                 usuario.Email = novoUsuario.Email;
                 usuario.Senha = novoUsuario.Senha;
+                usuario.Funcao = (Funcao)Enum.Parse(typeof(Funcao), novoUsuario.Funcao.ToString());
                 usuario.Data_criacao = DateTime.Now;
                 usuario.Data_modificacao = DateTime.Now;
                 usuario.Ativo = true;
@@ -81,6 +84,7 @@ namespace MarketMargoAPI.Controllers
             usuario.Nome = atualizarUsuario.Nome;
             usuario.Email = atualizarUsuario.Email;
             usuario.Senha = atualizarUsuario.Senha;
+            usuario.Funcao = (Funcao)Enum.Parse(typeof(Funcao), atualizarUsuario.Funcao.ToString());
 
             var existingUser = await _dbContext.TbUsuario.FindAsync(id);
 

@@ -2,5 +2,9 @@
 {
     public enum Funcao
     {
+        GERENTE = 1,
+        ESTOQUISTA,
+        ADMINISTRADOR,
+        CAIXA
     }
 }

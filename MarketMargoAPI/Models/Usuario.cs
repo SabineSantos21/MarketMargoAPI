@@ -46,6 +46,9 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("senha")]
         public string? Senha { get; set; }
+
+        [JsonPropertyName("funcao")]
+        public int Funcao { get; set; }
     }
 
     public class AtualizarUsuario
@@ -61,6 +64,9 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [JsonPropertyName("funcao")]
+        public int Funcao { get; set; }
     }
 
     public class UsuarioResource
