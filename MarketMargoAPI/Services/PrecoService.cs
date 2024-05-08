@@ -12,9 +12,9 @@ namespace MarketMargoAPI.Services
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Preco>> GetPrecos()
+        public async Task<IEnumerable<Preco>> GetPrecos(int produto_id)
         {
-            return await _dbContext.TbPreco.ToListAsync();
+            return await _dbContext.TbPreco.Where(p => p.IdProduto == produto_id).ToListAsync();
         }
 
         public async Task<Preco?> GetPrecoById(int id)

@@ -15,12 +15,12 @@ namespace MarketMargoAPI.Controllers
             _dbContext = dbContext;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Preco>>> GetPrecos()
+        [HttpGet("produto_id")]
+        public async Task<ActionResult<IEnumerable<Preco>>> GetPrecos(int produto_id)
         {
             PrecoService precoService = new PrecoService(_dbContext);
 
-            IEnumerable<Preco> precos = await precoService.GetPrecos();
+            IEnumerable<Preco> precos = await precoService.GetPrecos(produto_id);
 
             return Ok(precos);
         }
