@@ -23,6 +23,7 @@ namespace MarketMargoAPI.Controllers
 
             if (usuario != null)
             {
+                usuario.Senha = string.Empty;
                 usuario.Token = loginService.GerarTokenJWT(login.Email);
 
                 return Ok(usuario);
