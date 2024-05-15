@@ -1,0 +1,16 @@
+# Definir a versão do EditorConfig
+root = true
+
+# Definir o estilo de identação para usar espaços
+[*]
+indent_style = space
+indent_size = 4
+
+# Definir o estilo de quebra de linha
+end_of_line = lf
+
+# Definir o charset
+charset = utf-8
+
+# Definir a quebra de linha no final do arquivo
+insert_final_newline = true

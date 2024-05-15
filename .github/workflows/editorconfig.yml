@@ -1,0 +1,25 @@
+name: EditorConfig Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  editorconfig-check:
+    name: EditorConfig Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Setup MSBuild
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Install StyleCop
+        run: dotnet tool install --global StyleCop.Analyzers
+
+      - name: Verify StyleCop
+        run: dotnet build /p:StyleCopEnabled=true /p:StyleCopOverrideSettingsFile=.editorconfig /p:TreatWarningsAsErrors=true
