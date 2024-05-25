@@ -23,7 +23,8 @@ namespace MarketMargoAPI.Services
                     TransacoesHoje = GetCardTransacoesHoje(),
                     VendasComSucesso = GetCardTransacoesSucessoHoje(),
                     VendasComInsucesso = GetCardTransacoesInsucessoHoje(),
-                    ChatQuantidadeProdutosVendidosPorCategoria = GetQuantidadeProdutosVendidosPorCategoria()
+                    ChatQuantidadeProdutosVendidosPorCategoria = GetQuantidadeProdutosVendidosPorCategoria(),
+                    GetQuantidadeDeVendasHojePorProduto = GetQuantidadeDeVendasHojePorProduto()
                 };
 
                 return dashboard;
@@ -158,6 +159,66 @@ namespace MarketMargoAPI.Services
                 }
 
                 return chartPie;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ChatPie GetQuantidadeDeVendasHojePorProduto()
+        {
+            try
+            {
+                ChatPie chartPie = new ChatPie()
+                {
+                    Label = new List<string>(),
+                    Value = new List<int>()
+                };
+
+                var produtos = _dbContext.TbCaixa
+                   .Join(_dbContext.TbProduto,
+                       caixa => caixa.Id_Produto,
+                       produto => produto.Id,
+                       (caixa, produto) => new { Caixa = caixa, Produto = produto })
+                   .Where(t => t.Caixa.Data_criacao.Date == DateTime.Now.Date)
+                   .Select(t => new
+                   {
+                       Produto = t.Produto,
+                       IdCategoria = t.Produto.Id_Categoria,
+                       Quantidade = t.Caixa.Quantidade
+                   })
+                   .ToList();
+
+                var produtosAgrupados = produtos
+                    .Select(t => new
+                    {
+                        Produto = t.Produto,
+                        Quantidade = t.Quantidade
+                    })
+                    .AsEnumerable()
+                    .GroupBy(t => t.Produto)
+                    .ToList();
+
+                //foreach (var item in produtosAgrupados)
+                //{
+                //    if (item.Produto != null)
+                //    {
+                //        int index = chartPie.Label.IndexOf(item.Produto.Nome);
+                //        if (index != -1)
+                //        {
+                //            chartPie.Value[index] += item.Quantidade;
+                //        }
+                //        else
+                //        {
+                //            chartPie.Label.Add(item.Produto.Nome);
+                //            chartPie.Value.Add(item.Quantidade);
+                //        }
+                //    }
+                //}
+
+                return chartPie;
+
             }
             catch (Exception ex)
             {

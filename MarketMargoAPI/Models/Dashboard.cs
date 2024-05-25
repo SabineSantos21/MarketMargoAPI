@@ -20,6 +20,9 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("chatQuantidadeProdutosVendidosPorCategoria")]
         public ChatPie? ChatQuantidadeProdutosVendidosPorCategoria { get; set; }
+        
+        [JsonPropertyName("chatQuantidadeDeVendasHojePorProduto")]
+        public ChatPie? GetQuantidadeDeVendasHojePorProduto { get; set; }
     }
     
     public class Card
