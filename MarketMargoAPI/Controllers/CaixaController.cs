@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using MarketMargoAPI.Models.Enum;
 using MarketMargoAPI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +35,7 @@ namespace MarketMargoAPI.Controllers
                     caixa.Cod_Barras = caixaService.GenerateRandomBarcode();
                     caixa.Status = StatusTransacao.SUCESSO.GetHashCode();
                     caixa.Transacao_Code = transacaoCode;
-                    caixa.Preco_Produto = precoService.GetPrecoByProdutoId(novaTransacaoItem.IdProduto).Valor;
+                    caixa.Preco_Produto = precoService.GetPrecoByProdutoId(novaTransacaoItem.IdProduto).Result.Valor;
                     caixa.Data_criacao = DateTime.Now;
                     caixa.Data_modificacao = DateTime.Now;
                     caixa.Ativo = true;

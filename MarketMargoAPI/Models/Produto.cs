@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace MarketMargoAPI.Models
@@ -27,6 +28,10 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [NotMapped]
+        [JsonPropertyName("preco")]
+        public string? Preco { get; set; }
     }
 
     public class NovoProduto
@@ -42,6 +47,9 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("id_categoria")]
         public int Id_Categoria { get; set; }
+
+        [JsonPropertyName("preco")]
+        public double Preco { get; set; }
     }
 
     public class AtualizarProduto

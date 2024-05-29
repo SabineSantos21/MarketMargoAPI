@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketMargoAPI.Services
@@ -22,9 +22,9 @@ namespace MarketMargoAPI.Services
             return await _dbContext.TbPreco.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Preco? GetPrecoByProdutoId(int produto_id)
+        public async Task<Preco?> GetPrecoByProdutoId(int produto_id)
         {
-            return _dbContext.TbPreco.Where(p => p.IdProduto == produto_id).OrderByDescending(p => p.Id).FirstOrDefault();
+            return await _dbContext.TbPreco.Where(p => p.IdProduto == produto_id).OrderByDescending(p => p.Id).FirstOrDefaultAsync();
         }
 
         public async Task<Preco> CriarPreco(Preco preco)

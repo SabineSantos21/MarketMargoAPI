@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using MarketMargoAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,8 +19,15 @@ namespace MarketMargoAPI.Controllers
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
             ProdutoService produtoService = new ProdutoService(_dbContext);
+            PrecoService precoService = new PrecoService(_dbContext);
 
             IEnumerable<Produto> produtos = await produtoService.GetProdutos();
+
+            foreach (var item in produtos)
+            {
+                var preco = precoService.GetPrecoByProdutoId(item.Id).Result;
+                item.Preco = preco != null ? preco.Valor.ToString("N2").Replace(".", ",") : string.Empty;       
+            }
 
             return Ok(produtos);
         }
@@ -61,12 +68,25 @@ namespace MarketMargoAPI.Controllers
                 produto.Nome = novoProduto.Nome;
                 produto.Setor = novoProduto.Setor;
                 produto.Quantidade = novoProduto.Quantidade;
-                produto.Id_Categoria = novoProduto.Id_Categoria;
+                produto.Id_Categoria = 1;
                 produto.Data_criacao = DateTime.Now;
                 produto.Data_modificacao = DateTime.Now;
                 produto.Ativo = true;
 
                 await produtoService.CriarProduto(produto);
+
+                PrecoService precoService = new PrecoService(_dbContext);
+                Preco newPreco = new Preco()
+                {
+                    IdProduto = produto.Id,
+                    Valor = novoProduto.Preco,
+                    Ativo = true,
+                    Data_criacao = DateTime.Now,
+                    Data_modificacao = DateTime.Now,
+                    PorcentagemAumento = 0
+                };
+
+                await precoService.CriarPreco(newPreco);
 
                 return Ok(produto);
             }

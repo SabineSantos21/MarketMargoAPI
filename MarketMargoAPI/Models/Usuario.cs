@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using System;
 using MarketMargoAPI.Models.Enum;
@@ -21,6 +21,10 @@ namespace MarketMargoAPI.Models
 
         [JsonPropertyName("funcao")]
         public Funcao Funcao { get; set; }
+
+        [NotMapped]
+        [JsonPropertyName("nomeFuncao")]
+        public string? NomeFuncao { get; set; }
 
         [JsonPropertyName("data_criacao")]
         public DateTime Data_criacao { get; set; }

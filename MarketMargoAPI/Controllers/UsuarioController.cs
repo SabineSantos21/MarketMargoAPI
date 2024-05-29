@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using MarketMargoAPI.Models.Enum;
 using MarketMargoAPI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +27,7 @@ namespace MarketMargoAPI.Controllers
             foreach (var item in usuarios)
             {
                 item.Senha = string.Empty;
+                item.NomeFuncao = item.Funcao.ToString();
             }
 
             return Ok(usuarios);
