@@ -32,6 +32,10 @@ namespace MarketMargoAPI.Models
         [NotMapped]
         [JsonPropertyName("preco")]
         public string? Preco { get; set; }
+
+        [NotMapped]
+        [JsonPropertyName("nomeCategoria")]
+        public string? NomeCategoria { get; set; }
     }
 
     public class NovoProduto

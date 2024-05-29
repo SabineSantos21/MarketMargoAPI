@@ -20,13 +20,16 @@ namespace MarketMargoAPI.Controllers
         {
             ProdutoService produtoService = new ProdutoService(_dbContext);
             PrecoService precoService = new PrecoService(_dbContext);
+            CategoriaService categoriaService = new CategoriaService(_dbContext);
 
             IEnumerable<Produto> produtos = await produtoService.GetProdutos();
 
             foreach (var item in produtos)
             {
                 var preco = precoService.GetPrecoByProdutoId(item.Id).Result;
-                item.Preco = preco != null ? preco.Valor.ToString("N2").Replace(".", ",") : string.Empty;       
+                item.Preco = preco != null ? preco.Valor.ToString("N2").Replace(".", ",") : string.Empty;
+                item.NomeCategoria = categoriaService.GetCategoriaById(item.Id_Categoria).Result.Nome;
+
             }
 
             return Ok(produtos);
@@ -38,6 +41,13 @@ namespace MarketMargoAPI.Controllers
             ProdutoService produtoService = new ProdutoService(_dbContext);
 
             IEnumerable<Produto> produtos = await produtoService.GetProdutosByIdCategoria(id_categoria);
+
+            CategoriaService categoriaService = new CategoriaService(_dbContext);
+
+            foreach (var item in produtos)
+            {
+                item.NomeCategoria = categoriaService.GetCategoriaById(item.Id_Categoria).Result.Nome;
+            }
 
             return Ok(produtos);
         }
@@ -68,7 +78,7 @@ namespace MarketMargoAPI.Controllers
                 produto.Nome = novoProduto.Nome;
                 produto.Setor = novoProduto.Setor;
                 produto.Quantidade = novoProduto.Quantidade;
-                produto.Id_Categoria = 1;
+                produto.Id_Categoria = novoProduto.Id_Categoria;
                 produto.Data_criacao = DateTime.Now;
                 produto.Data_modificacao = DateTime.Now;
                 produto.Ativo = true;

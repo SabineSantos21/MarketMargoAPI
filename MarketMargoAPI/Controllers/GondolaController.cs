@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using MarketMargoAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +21,13 @@ namespace MarketMargoAPI.Controllers
             GondolaService gondolaService = new GondolaService(_dbContext);
 
             IEnumerable<Gondola> gondolas = await gondolaService.GetGondolas();
+
+            CategoriaService categoriaService = new CategoriaService(_dbContext);
+
+            foreach (var item in gondolas)
+            {
+                item.NomeCategoria = categoriaService.GetCategoriaById(item.Id_Categoria).Result.Nome;
+            }
 
             return Ok(gondolas);
         }
