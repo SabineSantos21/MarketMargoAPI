@@ -62,6 +62,10 @@ Quantidade de cadastros de produtos (Hoje). Transações(Hoje). Vendas com suces
 2. Instale as dependências (``)
 3. Execute o projeto (`Definir projeto padrão, como *nome do projeto* e efetuar click no botão "start"`)
 
+## Como Executar o QSL do projeto (Banco de dados)
+
+1. Baixe o script do sql ('MarketMargoDBQuery.sql')
+2. Acesse o MySQL Workbench e abra o arquivo como script
 ## PROJETO Front-End
 
 - **FrontEnd** [GIT](https://github.com/AnnaBLoz/market-margo)
