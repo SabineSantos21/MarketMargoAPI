@@ -200,22 +200,22 @@ namespace MarketMargoAPI.Services
                     .GroupBy(t => t.Produto)
                     .ToList();
 
-                //foreach (var item in produtosAgrupados)
-                //{
-                //    if (item.Produto != null)
-                //    {
-                //        int index = chartPie.Label.IndexOf(item.Produto.Nome);
-                //        if (index != -1)
-                //        {
-                //            chartPie.Value[index] += item.Quantidade;
-                //        }
-                //        else
-                //        {
-                //            chartPie.Label.Add(item.Produto.Nome);
-                //            chartPie.Value.Add(item.Quantidade);
-                //        }
-                //    }
-                //}
+                foreach (var item in produtosAgrupados)
+                {
+                    if (item.Key != null)
+                    {
+                        int index = chartPie.Label.IndexOf(item.Key.Nome);
+                        if (index != -1)
+                        {
+                            chartPie.Value[index] += item.Key.Quantidade;
+                        }
+                        else
+                        {
+                            chartPie.Label.Add(item.Key.Nome);
+                            chartPie.Value.Add(item.Key.Quantidade);
+                        }
+                    }
+                }
 
                 return chartPie;
 
