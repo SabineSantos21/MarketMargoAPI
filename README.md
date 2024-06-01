@@ -1,4 +1,8 @@
 # MARKET-MARGO
+## Grupo
+Anna Beatriz Loz Silva e Souza
+Matheus de Oliveira Lofy
+Sabine Freiman
 
 ## Documentação
 
