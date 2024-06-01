@@ -59,8 +59,9 @@ Quantidade de cadastros de produtos (Hoje). Transações(Hoje). Vendas com suces
 ## Como Executar o Projeto (BACK-END)
 
 1. Clone o repositório (`git clone https://github.com/SabineSantos21/MarketMargoAPI.git`)
-2. Instale as dependências (``)
-3. Execute o projeto (`Definir projeto padrão, como *nome do projeto* e efetuar click no botão "start"`)
+2. SDK .NET 7.0
+   * A instalação pode ser feita no site da microsoft https://dotnet.microsoft.com/pt-br/download/dotnet/7.0
+4. Execute o projeto (`Definir projeto MarketMargoAPI padrão e efetuar click no botão "start" no visual studio`)
 
 ## Como Executar o SQL do projeto (Banco de dados)
 
