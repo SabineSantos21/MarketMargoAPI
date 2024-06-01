@@ -14,9 +14,11 @@
 
 - **Front-End:** [Angular](https://angular.io/)
   - Desenvolvimento do lado do cliente.
+  - Utilizado o Visual Studio Code para executar o projeto.
 
 - **Back-End:** [.NET](https://dotnet.microsoft.com/)
   - Desenvolvimento do lado do servidor.
+  - Utilizado o Visual Studio para executar o projeto.
 
 - **Banco de Dados:** [MySQL](https://www.mysql.com/)
   - Armazenamento de dados.
