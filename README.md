@@ -73,6 +73,7 @@ Quantidade de cadastros de produtos (Hoje). Transações(Hoje). Vendas com suces
 
 1. Baixe o script do sql ('MarketMargoDBQuery.sql')
 2. Acesse o MySQL Workbench e abra o arquivo como script
+3. Para efetuar a ligação do banco de dados e backend, alterar a senha da conexão localhost para "15Dev"
 ## PROJETO Front-End
 
 - **FrontEnd** [GIT](https://github.com/AnnaBLoz/market-margo)
