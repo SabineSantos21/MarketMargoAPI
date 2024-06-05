@@ -9,7 +9,7 @@ namespace MarketMargoAPI.Models
         [JsonPropertyName("cardProdutosCadastrados")]
         public Card? ProdutosCadastradosHoje { get; set; }
 
-        [JsonPropertyName("cardTransaçoesHoje")]
+        [JsonPropertyName("cardTransacoesHoje")]
         public Card? TransacoesHoje { get; set; }
 
         [JsonPropertyName("cardVendasComSucesso")]

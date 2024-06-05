@@ -42,7 +42,7 @@ namespace MarketMargoAPI.Services
                 Card card = new Card()
                 {
                     Descricao = "Produtos Cadastrados (Hoje)",
-                    Valor = _dbContext.TbProduto.Where(p => p.Data_criacao.Date == DateTime.Now).ToList().Count
+                    Valor = _dbContext.TbProduto.Where(p => p.Data_criacao.Date == DateTime.Now.Date).ToList().Count
                 };
 
                 return card;
@@ -60,7 +60,7 @@ namespace MarketMargoAPI.Services
                 Card card = new Card()
                 {
                     Descricao = "Transações (Hoje)",
-                    Valor = _dbContext.TbCaixa.Where(p => p.Data_criacao.Date == DateTime.Now).ToList().Count
+                    Valor = _dbContext.TbCaixa.Where(p => p.Data_criacao.Date == DateTime.Now.Date).ToList().Count
                 };
 
                 return card;
@@ -78,7 +78,7 @@ namespace MarketMargoAPI.Services
                 Card card = new Card()
                 {
                     Descricao = "Vendas com Sucesso (Hoje)",
-                    Valor = _dbContext.TbCaixa.Where(p => p.Data_criacao.Date == DateTime.Now && p.Status == StatusTransacao.SUCESSO.GetHashCode()).ToList().Count
+                    Valor = _dbContext.TbCaixa.Where(p => p.Data_criacao.Date == DateTime.Now.Date && p.Status == StatusTransacao.SUCESSO.GetHashCode()).ToList().Count
                 };
 
                 return card;
@@ -96,7 +96,7 @@ namespace MarketMargoAPI.Services
                 Card card = new Card()
                 {
                     Descricao = "Vendas com Insucesso (Hoje)",
-                    Valor = _dbContext.TbCaixa.Where(p => p.Data_criacao.Date == DateTime.Now && p.Status == StatusTransacao.SUCESSO.GetHashCode()).ToList().Count
+                    Valor = _dbContext.TbCaixa.Where(p => p.Data_criacao.Date == DateTime.Now.Date && p.Status == StatusTransacao.INSUCESSO.GetHashCode()).ToList().Count
                 };
 
                 return card;
