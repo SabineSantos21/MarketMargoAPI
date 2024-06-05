@@ -1,4 +1,8 @@
 # MARKET-MARGO
+## Grupo
+* Anna Beatriz Loz Silva e Souza
+* Matheus de Oliveira Lofy
+* Sabine Freiman
 
 ## Documentação
 
@@ -10,9 +14,11 @@
 
 - **Front-End:** [Angular](https://angular.io/)
   - Desenvolvimento do lado do cliente.
+  - Utilizado o Visual Studio Code para executar o projeto.
 
 - **Back-End:** [.NET](https://dotnet.microsoft.com/)
   - Desenvolvimento do lado do servidor.
+  - Utilizado o Visual Studio para executar o projeto.
 
 - **Banco de Dados:** [MySQL](https://www.mysql.com/)
   - Armazenamento de dados.
@@ -59,13 +65,15 @@ Quantidade de cadastros de produtos (Hoje). Transações(Hoje). Vendas com suces
 ## Como Executar o Projeto (BACK-END)
 
 1. Clone o repositório (`git clone https://github.com/SabineSantos21/MarketMargoAPI.git`)
-2. Instale as dependências (``)
-3. Execute o projeto (`Definir projeto padrão, como *nome do projeto* e efetuar click no botão "start"`)
+2. SDK .NET 7.0
+   * A instalação pode ser feita no site da microsoft https://dotnet.microsoft.com/pt-br/download/dotnet/7.0
+4. Execute o projeto (`Definir projeto MarketMargoAPI padrão e efetuar click no botão "start" no visual studio`)
 
 ## Como Executar o SQL do projeto (Banco de dados)
 
 1. Baixe o script do sql ('MarketMargoDBQuery.sql')
 2. Acesse o MySQL Workbench e abra o arquivo como script
+3. Para efetuar a ligação do banco de dados e backend, alterar a senha da conexão localhost para "15Dev"
 ## PROJETO Front-End
 
 - **FrontEnd** [GIT](https://github.com/AnnaBLoz/market-margo)
