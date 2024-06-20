@@ -186,33 +186,32 @@ namespace MarketMargoAPI.Services
                    {
                        Produto = t.Produto,
                        IdCategoria = t.Produto.Id_Categoria,
-                       Quantidade = t.Caixa.Quantidade
+                       Quantidade = t.Caixa.Quantidade,
                    })
                    .ToList();
 
                 var produtosAgrupados = produtos
-                    .Select(t => new
-                    {
-                        Produto = t.Produto,
-                        Quantidade = t.Quantidade
-                    })
-                    .AsEnumerable()
                     .GroupBy(t => t.Produto)
+                    .Select(g => new
+                    {
+                        Produto = g.Key,
+                        QuantidadeTotal = g.Sum(t => t.Quantidade)
+                    })
                     .ToList();
 
                 foreach (var item in produtosAgrupados)
                 {
-                    if (item.Key != null)
+                    if (item.Produto != null)
                     {
-                        int index = chartPie.Label.IndexOf(item.Key.Nome);
+                        int index = chartPie.Label.IndexOf(item.Produto.Nome);
                         if (index != -1)
                         {
-                            chartPie.Value[index] += item.Key.Quantidade;
+                            chartPie.Value[index] += item.QuantidadeTotal;
                         }
                         else
                         {
-                            chartPie.Label.Add(item.Key.Nome);
-                            chartPie.Value.Add(item.Key.Quantidade);
+                            chartPie.Label.Add(item.Produto.Nome);
+                            chartPie.Value.Add(item.QuantidadeTotal);
                         }
                     }
                 }
