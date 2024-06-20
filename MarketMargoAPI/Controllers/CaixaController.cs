@@ -61,10 +61,12 @@ namespace MarketMargoAPI.Controllers
             List<Caixa> transactions = await caixaService.GetTransacaoByCode(cod_transacao);
 
             ProdutoService produtoService = new ProdutoService(_dbContext);
+            CategoriaService categoriaService = new CategoriaService(_dbContext);
 
             foreach (var item in transactions)
             {
                 item.Produto = produtoService.GetProdutoById(item.Id_Produto).Result;
+                item.Produto.NomeCategoria = categoriaService.GetCategoriaById(item.Produto.Id_Categoria).Result.Nome;
             }
 
             if (transactions == null)

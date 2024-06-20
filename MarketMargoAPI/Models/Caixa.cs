@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace MarketMargoAPI.Models
@@ -50,7 +50,7 @@ namespace MarketMargoAPI.Models
         [JsonPropertyName("id_produto")]
         public int IdProduto { get; set; }
 
-        [JsonPropertyName("quantidade ")]
+        [JsonPropertyName("quantidade")]
         public int Quantidade { get; set; }
     }
 }

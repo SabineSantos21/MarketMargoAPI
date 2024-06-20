@@ -43,10 +43,12 @@ namespace MarketMargoAPI.Controllers
             IEnumerable<Produto> produtos = await produtoService.GetProdutosByIdCategoria(id_categoria);
 
             CategoriaService categoriaService = new CategoriaService(_dbContext);
+            PrecoService precoService = new PrecoService(_dbContext);
 
             foreach (var item in produtos)
             {
                 item.NomeCategoria = categoriaService.GetCategoriaById(item.Id_Categoria).Result.Nome;
+                item.Preco = precoService.GetPrecoByProdutoId(item.Id).Result.Valor.ToString() ;
             }
 
             return Ok(produtos);
