@@ -43,6 +43,9 @@ namespace MarketMargoAPI.Models
     {
         [JsonPropertyName("produtos_transacao")]
         public List<ProdutosTransacao>? ProdutosTransacao { get; set; }
+
+        [JsonPropertyName("success")]
+        public bool Success { get; set; }
     }
 
     public class ProdutosTransacao

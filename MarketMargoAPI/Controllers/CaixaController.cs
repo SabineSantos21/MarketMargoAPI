@@ -34,7 +34,7 @@ namespace MarketMargoAPI.Controllers
                     caixa.Id_Produto = novaTransacaoItem.IdProduto;
                     caixa.Quantidade = novaTransacaoItem.Quantidade;
                     caixa.Cod_Barras = caixaService.GenerateRandomBarcode();
-                    caixa.Status = StatusTransacao.SUCESSO.GetHashCode();
+                    caixa.Status = novaTransacao.Success == true ? StatusTransacao.SUCESSO.GetHashCode() : StatusTransacao.INSUCESSO.GetHashCode();
                     caixa.Transacao_Code = transacaoCode;
                     caixa.Preco_Produto = precoService.GetPrecoByProdutoId(novaTransacaoItem.IdProduto).Result.Valor;
                     caixa.Data_criacao = DateTime.Now;
@@ -50,13 +50,17 @@ namespace MarketMargoAPI.Controllers
                         return NotFound();
                     }
 
-                    Produto produto = new Produto();
-                    produto.Nome = existingProduto.Nome;
-                    produto.Setor = existingProduto.Setor;
-                    produto.Quantidade = existingProduto.Quantidade - novaTransacaoItem.Quantidade;
-                    produto.Ativo = existingProduto.Ativo;
+                    if(novaTransacao.Success == true)
+                    {
+                        Produto produto = new Produto();
+                        produto.Nome = existingProduto.Nome;
+                        produto.Setor = existingProduto.Setor;
+                        produto.Quantidade = existingProduto.Quantidade - novaTransacaoItem.Quantidade;
+                        produto.Ativo = existingProduto.Ativo;
 
-                    await produtoService.AtualizarProduto(existingProduto, produto);
+                        await produtoService.AtualizarProduto(existingProduto, produto);
+                    }
+
                 }
 
                 List<Caixa> transactions = await caixaService.GetTransacaoByCode(transacaoCode);
