@@ -67,6 +67,10 @@ namespace MarketMargoAPI.Models
         [JsonPropertyName("quantidade")]
         public int Quantidade { get; set; }
 
+        [NotMapped]
+        [JsonPropertyName("preco")]
+        public string? Preco { get; set; }
+
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
     }

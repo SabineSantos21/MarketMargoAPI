@@ -112,6 +112,7 @@ namespace MarketMargoAPI.Controllers
         public async Task<IActionResult> PutProduto(int id, AtualizarProduto atualizarProduto)
         {
             ProdutoService produtoService = new ProdutoService(_dbContext);
+            PrecoService precoService = new PrecoService(_dbContext);
 
             Produto produto = new Produto();
             produto.Nome = atualizarProduto.Nome;

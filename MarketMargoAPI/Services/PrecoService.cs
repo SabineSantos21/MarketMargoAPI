@@ -29,8 +29,15 @@ namespace MarketMargoAPI.Services
 
         public async Task<Preco> CriarPreco(Preco preco)
         {
-            _dbContext.TbPreco.Add(preco);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                _dbContext.TbPreco.Add(preco);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             return preco;
         }

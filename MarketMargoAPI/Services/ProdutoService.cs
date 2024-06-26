@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketMargoAPI.Services
@@ -49,7 +49,16 @@ namespace MarketMargoAPI.Services
 
         public async Task DeletarProduto(Produto produto)
         {
+            // Obter os registros relacionados na tabela TBPreco
+            var precos = _dbContext.TbPreco.Where(p => p.IdProduto == produto.Id).ToList();
+
+            // Remover os registros relacionados
+            _dbContext.TbPreco.RemoveRange(precos);
+
+            // Remover o produto
             _dbContext.TbProduto.Remove(produto);
+
+            // Salvar as mudanças
             await _dbContext.SaveChangesAsync();
         }
     }

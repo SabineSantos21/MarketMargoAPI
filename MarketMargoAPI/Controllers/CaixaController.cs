@@ -24,6 +24,7 @@ namespace MarketMargoAPI.Controllers
             {
                 CaixaService caixaService = new CaixaService(_dbContext);
                 PrecoService precoService = new PrecoService(_dbContext);
+                ProdutoService produtoService = new ProdutoService(_dbContext);
 
                 var transacaoCode = caixaService.GenerateTransactionCode();
 
@@ -41,6 +42,21 @@ namespace MarketMargoAPI.Controllers
                     caixa.Ativo = true;
                     
                     await caixaService.CriarCaixa(caixa);
+
+                    var existingProduto = await _dbContext.TbProduto.FindAsync(novaTransacaoItem.IdProduto);
+
+                    if (existingProduto == null)
+                    {
+                        return NotFound();
+                    }
+
+                    Produto produto = new Produto();
+                    produto.Nome = existingProduto.Nome;
+                    produto.Setor = existingProduto.Setor;
+                    produto.Quantidade = existingProduto.Quantidade - novaTransacaoItem.Quantidade;
+                    produto.Ativo = existingProduto.Ativo;
+
+                    await produtoService.AtualizarProduto(existingProduto, produto);
                 }
 
                 List<Caixa> transactions = await caixaService.GetTransacaoByCode(transacaoCode);
