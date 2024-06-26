@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketMargoAPI.Services
@@ -34,6 +34,8 @@ namespace MarketMargoAPI.Services
         {
             existingUsuario.Nome = usuario.Nome;
             existingUsuario.Ativo = usuario.Ativo;
+            existingUsuario.Funcao = usuario.Funcao;
+            existingUsuario.Email = usuario.Email;
             existingUsuario.Data_modificacao = DateTime.Now;
 
             _dbContext.TbUsuario.Update(existingUsuario);

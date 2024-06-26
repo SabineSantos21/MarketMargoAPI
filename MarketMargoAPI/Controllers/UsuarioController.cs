@@ -86,6 +86,7 @@ namespace MarketMargoAPI.Controllers
             usuario.Email = atualizarUsuario.Email;
             usuario.Senha = atualizarUsuario.Senha;
             usuario.Funcao = (Funcao)Enum.Parse(typeof(Funcao), atualizarUsuario.Funcao.ToString());
+            usuario.Ativo = atualizarUsuario.Ativo;
 
             var existingUser = await _dbContext.TbUsuario.FindAsync(id);
 
