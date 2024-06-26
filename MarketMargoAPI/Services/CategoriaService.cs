@@ -1,4 +1,4 @@
-﻿using MarketMargoAPI.Models;
+using MarketMargoAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketMargoAPI.Services
@@ -33,6 +33,7 @@ namespace MarketMargoAPI.Services
         public async Task AtualizarCategoria(Categoria existingCategoria, Categoria categoria)
         {
             existingCategoria.Nome = categoria.Nome;
+            existingCategoria.Ativo = categoria.Ativo;
             existingCategoria.Data_modificacao = DateTime.Now;
 
             _dbContext.TbCategoria.Update(existingCategoria);
